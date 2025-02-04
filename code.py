@@ -28,6 +28,9 @@ def printHelp():
   print("  'o': immediate ON")
   print("  'x': immediate OFF")
 
+def printTerms():
+  print(f'current setting: ON = {onTerm / 3600} hour, OFF = {offTerm / 3600} hour')
+
 def setPower(flag):
   pwrOff.value = not flag
   print('ON' if flag else 'OFF')
@@ -35,6 +38,7 @@ def setPower(flag):
 time.sleep(2)  # to wait serial terminal
 timeLastTransition = time.time()
 printHelp()
+printTerms()
 powerStatus = True
 setPower(powerStatus)
 
@@ -70,7 +74,7 @@ while True:
     else:
       updateConfig = False
       printHelp()
-    print(f'current setting: ON = {onTerm / 3600} hour, OFF = {offTerm / 3600} hour')
+    printTerms()
     if updateConfig:
       with open("config.py", "w") as f:
         f.write(f'onTerm = {onTerm}\n')
@@ -89,5 +93,3 @@ while True:
   led.value = count % 10 > (0 if powerStatus else 8)
   count += 1
   time.sleep(0.1)
-
-
