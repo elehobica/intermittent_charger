@@ -4,8 +4,8 @@
 This is Intermittent Charger
 
 This project features:
-* Analog signal input for multiple channels (max 3 channels)
-* Configurable dB scale steps and levels
+* Periodic charging ON/OFF control
+* Configurable ON/OFF term from Serial I/F
 
 ## Supported Board
 * ItsyBitsy RP2040 board
@@ -13,10 +13,10 @@ This project features:
 ## Pin Assignment
 ### ST7735S 80x160 LCD (Waveshare RP2040-LCD-0.96 Board)
 
-| Pin # | Pin Name | Function | Signal Name |
-----|----|----|----
-|D5 | GPIO14 | GPIO | PowerEnableNot |
-|D2 | GPIO12 | GPIO | FileSystem Readonly Select |
+| Pin # | Pin Name | Function | Signal Name | Description |
+----|----|----|----|----
+|D5 | GPIO14 | GPIO | PwrOff | 0: Power ON, 1: Power OFF |
+|D2 | GPIO12 | GPIO | ReadonlySwitch | 0: Filesystem R/W from the board / Read-only from PC,  open: Filesystem R/W from PC / Read-only from the board |
 
 ## Schematic
 
